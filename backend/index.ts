@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express"
 import "./databases/database"
+import "./databases/cache"
 import { server_port } from "./enviroment"
 
 const app = express()

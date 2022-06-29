@@ -10,7 +10,7 @@ const db = new DataSource({
     password: db_config.password,
     database: db_config.database,
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: [User],
     subscribers: [],
     migrations: [],
