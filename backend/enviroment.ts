@@ -1,7 +1,5 @@
 import "dotenv/config"
 
-export const server_port = process.env.PORT
-
 type Enviroment = {
     host: string,
     port: number,
@@ -9,6 +7,8 @@ type Enviroment = {
     password: string,
     database: string
 }
+
+export const server_port = process.env.PORT
 
 export const db_config: Enviroment = {
     host: process.env.MARIA_HOST,

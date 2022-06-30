@@ -1,3 +1,4 @@
+//Contains the User database class and the custom User return type.
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
