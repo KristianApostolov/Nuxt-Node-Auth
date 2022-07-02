@@ -6,7 +6,7 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({ type: "varchar", unique: true})
+    @Column({ type: "varchar", unique: true, nullable: true })
     name: string
 
     @Column({ type: "varchar", unique: true})
@@ -15,10 +15,10 @@ export class User {
     @Column()
     password: string
 
-    @Column({ type: "varchar", unique: true})
+    @Column({ type: "varchar", unique: true, nullable: true})
     phone: string
 
-    @Column({ type: "varchar"})
+    @Column({ type: "varchar", nullable: true})
     address: string
 
 }
