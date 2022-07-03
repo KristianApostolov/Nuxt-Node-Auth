@@ -8,3 +8,5 @@ redis.connect()
 redis.on("ready", ()=>console.log("Redis connected.."))
 
 redis.on("error", error=>console.log(error))
+
+export default redis
