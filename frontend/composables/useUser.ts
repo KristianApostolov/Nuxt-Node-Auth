@@ -1,22 +1,26 @@
-import axios from "axios"
+import axios, {AxiosResponse} from "axios"
 import { Router } from "vue-router"
 
-export const useUser = (): Object => {
-    return useState("user", async ()=> {
-        const router: Router = useRouter()
+export const useUser = () => {
+    return useState("user", ()=> {
+        onMounted(async ()=>{
+            const router: Router = useRouter()
 
-        const session_id: string | null = localStorage.getItem("session_id")
-
-        if(session_id === null){
-            router.push("/login")
-            return null
-        }
+            const sessionId: string | null = localStorage.getItem("sessionId")
+            
+            if(sessionId === null && router.currentRoute.value.fullPath  !== "/register") {
+                router.push("/login")
+                return null
+            }
+            else if(router.currentRoute.value.fullPath === "/register") {
+                return null
+            }
         
-        return axios.post("/user/get",{
-            "session_id": session_id
-        }).then( response =>{
-        console.log(response.data)
-            return response.data
-        })
+            const response: AxiosResponse = await axios.post("http://localhost:4000/user/get", {
+                "session_id": sessionId
+            })
+            console.log(response.data)
+            return JSON.parse(response.data)
+        }) 
     })
 }
