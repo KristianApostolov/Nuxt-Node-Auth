@@ -1,43 +1,34 @@
 import { Router, Request, Response } from "express"
-import {create_session, email_is_free, get_id_by_session, hash_password, revoke_session, verify_password} from "./authentication/utility"
-import db from "./databases/database"
-import { User } from "./databases/tables/User"
+
+import { update_user_credentials, update_user_password } from "./authentication/credintials_update_utilities"
+import { email_is_in_use, get_id_by_session, get_user_by_id, get_user_by_session } from "./authentication/fetch_utilities"
+import { verify_password } from "./authentication/password_utilities"
+import { create_session, revoke_session } from "./authentication/session"
+import { create_user, login_user } from "./authentication/utility"
+import { UserType } from "./types"
 
 
 const router = Router()
 
-router.get("/", async (req: Request, res: Response) => {
-    res.status(200).send({ message: "Hello World"})
-})
 
 router.post("/user/register", async (req: Request, res: Response) => {
-    if(!await email_is_free(req.body.email)) {
-        res.status(400).send({ message: "Email is already in use"})
+    if (await email_is_in_use(req.body.email)) {
+        res.status(401).send({ message: "Email is already in use"})
         return 
     }
-    const user = new User()
-    user.email = req.body.email
-    user.password = await hash_password(req.body.password)
-    await db.save(user)
-    res.status(200).send({ message: "User created."})
+    const user = await create_user(req.body.email, req.body.password)
+    const session_id: string = await create_session(user.id)
+    res.status(200).send({ message: "User created.", "session_id": session_id})
 })
+
 router.post("/user/login", async (req: Request, res: Response) => {
-    await db.findOneBy(User, {
-        email: req.body.email
-    })
-    .then(async (user: User) => {
-       if(user === null){
-        res.status(400).send({ message: "User not found."})
-       }
-        if(await verify_password(req.body.password, user.password)){
-            const session_id = await create_session(user.id)
-            res.send({ message: "Login successful", session_id })
-        }
-        res.status(400).send({ message: "Wrong username or password."})
-    })
-    .catch((error: any)  =>{
-        res.status(400).send({ message: error})
-    })    
+    const session_id: string | boolean = await login_user(req.body.email, req.body.password)
+    if(session_id) {
+        res.status(200).send({ message: "User logged in.", "session_id": session_id})
+        return
+    }
+    res.status(401).send({ message: "Invalid email or password"})
+    return
 })
 
 router.post("/user/logout", async (req: Request, res: Response) => {
@@ -45,16 +36,30 @@ router.post("/user/logout", async (req: Request, res: Response) => {
     res.status(200).send({ message: "Logout successful"})
 })
 
-router.put("/user/update", async (req: Request, res: Response) => {
+router.put("/user/update/credentials", async (req: Request, res: Response) => {
     const id: number = await get_id_by_session(req.body.session_id)
-    db.update(User, {
-            id: id
-        },{
-            name: req.body.name,
-            address: req.body.address,
-            phone: req.body.phone
-        })
+    update_user_credentials(id, req.body)
     res.status(200).send({ message: "User updated."})
+})
+
+router.put("/user/update/password", async (req: Request, res: Response) => {
+    const id: number = await get_id_by_session(req.body.session_id)
+    const hashed_password: string = (await get_user_by_id(id)).password
+    if(verify_password(req.body.old_password, hashed_password)){
+        if(await update_user_password(id, req.body.new_password)) {
+            res.status(200).send({ message: "Password updated."})
+            return
+        }
+        res.status(401).send({ message: "Password could not be updated."})
+        return
+    }
+})
+
+router.post("/user/get", async (req: Request, res: Response) => {
+    const user: UserType = await get_user_by_session(req.body.session_id)
+    delete user.id
+    delete user.password
+    res.status(200).send({ user: user})
 })
 
 export default router

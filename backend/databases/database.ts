@@ -26,4 +26,6 @@ db_client.initialize()
 
 const db: EntityManager = db_client.manager
 
+export const userRepository = db_client.getRepository(User)
+
 export default db

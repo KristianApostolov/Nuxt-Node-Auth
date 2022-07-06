@@ -6,6 +6,11 @@
     src: url("~/assets/fonts/Inter/Inter-SemiBold.ttf")
 }
 
+@font-face {
+    font-family: "InterThin";
+    src: url("~/assets/fonts/Inter/Inter-Regular.ttf")
+}
+
 .rainbox-gradient {
     /* Rectangle 3 */
     width: 786px;

@@ -6,7 +6,7 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({ type: "varchar", unique: true, nullable: true })
+    @Column({ type: "varchar", nullable: true })
     name: string
 
     @Column({ type: "varchar", unique: true})
