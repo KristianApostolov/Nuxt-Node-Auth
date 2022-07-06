@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Ref } from 'vue';
-import { checkForUser } from './utility/checkForUser';
-import { logout } from './utility/logout';
+import { Ref } from 'vue'
+import { checkForUser } from './utility/checkForUser'
+import { logout } from './utility/logout'
 
 useloggedIn()
 
@@ -28,6 +28,6 @@ watch(logoutTracker, async () => {
 <template>
   <div class="inline-flex flex-col h-screen w-screen">
     <Navbar @logout="logoutTracker=!logoutTracker" v-if="user !== null" :user="user" />
-    <NuxtPage @update="updateTracker++" @authentication="updateTracker++" v-if="user === null || user" :user="user"/>
+    <NuxtPage @authentication="updateTracker++" v-if="user === null || user" :user="user"/>
   </div>
 </template>

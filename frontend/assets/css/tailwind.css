@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
     font-family: "Inter";
     src: url("~/assets/fonts/Inter/Inter-SemiBold.ttf")
@@ -9,6 +10,11 @@
 @font-face {
     font-family: "InterThin";
     src: url("~/assets/fonts/Inter/Inter-Regular.ttf")
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 .rainbox-gradient {
