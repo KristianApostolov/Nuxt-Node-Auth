@@ -14,10 +14,6 @@ module.exports = {
                 'button-lg': '1.125rem',
             },
             height: {
-                '1/16': '16px',
-                '1/8': '8px',
-                '9/16': '72px',
-                '7/16': '56px',
             },
             width: {}
         },

@@ -4,7 +4,7 @@ import { submitAuth } from '~~/utility/submitAuth';
 
 const props: any = defineProps({
     user: {
-        type: Boolean,
+        type: Object,
         required: true
     }
 })
@@ -29,6 +29,7 @@ const submit = () => {
         <AuthInput name="Email" type="text" :value="credentialsWrapper"/>
         <AuthInput name="Password" type="password" :value="credentialsWrapper"/>
         <AuthButton @submit="$emit('submit')" content="Log In"/>
+        <AuthText :isLogin="true" />
     </form>
 </div>
 </template>

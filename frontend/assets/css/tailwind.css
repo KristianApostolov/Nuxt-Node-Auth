@@ -12,8 +12,5 @@
 }
 
 .rainbox-gradient {
-    /* Rectangle 3 */
-    width: 786px;
-    height: 768px;
     background: conic-gradient(from 196.14deg at 77.36% 21.61%, #0E0ADF 0deg, #C84107 80.63deg, #FFB905 142.5deg, #00B712 234.38deg, #8500C3 322.5deg, #0E0ADF 360deg);
 }
