@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Express } from "express"
 import cors from "cors"
 
 import "./databases/database"
@@ -7,7 +7,7 @@ import "./databases/cache"
 import { server_port } from "./enviroment"
 import router from "./routes"
 
-const app = express()
+const app: Express = express()
 
 app.use(express.json())
 app.use(cors())
