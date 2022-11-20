@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import  { useRouter, Router } from 'vue-router'
+import { useRouter, Router } from "vue-router";
 
 const props: any = defineProps({
-    isLogin: {
-        type: Boolean,
-        required: true
-    }
-})
+  isLogin: {
+    type: Boolean,
+    required: true,
+  },
+});
 
-const mainText: string = props.isLogin ?"Don't have an account? " : "Already have an account? "
-const buttonText: string = props.isLogin ? "Register"  : "Login"
+const mainText: string = props.isLogin ? "Don't have an account? " : "Already have an account? ";
+const buttonText: string = props.isLogin ? "Register" : "Login";
 
-const router: Router = useRouter()
+const router: Router = useRouter();
 
 const pushTo: Function = (): void => {
-    router.push(props.isLogin ? "/register" : "/login")
-}
-
+  router.push(props.isLogin ? "/register" : "/login");
+};
 </script>
 
 <template>
-
-<div class="mx-4 mb-2 mt-0 font-Inter font-semibold">
+  <div id="textWrapper">
     <span>
-        {{ mainText }}
+      {{ mainText }}
     </span>
-    
+
     <span v-on:click="pushTo()" class="text-button-blue cursor-pointer">
-        {{ buttonText }}
+      {{ buttonText }}
     </span>
-    <span>
-        .
-    </span>
-</div>
-
+    <span> . </span>
+  </div>
 </template>
+<style scoped>
+#textWrapper {
+  @apply mx-4 mb-2 mt-0 font-Inter font-semibold;
+}
+</style>

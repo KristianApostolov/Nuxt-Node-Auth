@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Ref } from "vue";
+
 import { submitCredentialUpdate } from "~~/utility/submitCredentialUpdate";
 
 const props: any = defineProps({
@@ -30,7 +31,7 @@ const field_type: string = "text";
 
 <template>
   <div>
-    <form ref="form" v-on:submit="submit()" class="flex flex-col items-center md:items-start mx-3">
+    <form id="formWrapper" ref="form" v-on:submit="submit()">
       <DashboardHeading content="Details" />
       <DashboardInput name="Email" :value="credentialsWrapper['email']" :type="field_type" />
       <DashboardInput name="Telephone" :value="credentialsWrapper['telephone']" :type="field_type" />
@@ -40,3 +41,8 @@ const field_type: string = "text";
     </form>
   </div>
 </template>
+<style scoped>
+#formWrapper {
+  @apply flex flex-col items-center md:items-start mx-3;
+}
+</style>

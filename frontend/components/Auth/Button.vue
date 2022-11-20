@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props: any = defineProps({
+defineProps({
   content: {
     type: String,
     default: "Login",
@@ -9,12 +9,18 @@ const props: any = defineProps({
 </script>
 
 <template>
-  <button
-    type="submit"
-    class="bg-button-blue flex justify-center items-center w-fit h-fit text-white px-10 py-2 rounded-lg gap-2.5 ml-4"
-  >
-    <div class="font-Inter cursor-pointer text-button-lg leading-snug font-normal flex justify-center items-center">
+  <button id="buttonWrapper" type="submit">
+    <div id="buttonContent">
       {{ content }}
     </div>
   </button>
 </template>
+<style scoped>
+#buttonWrapper {
+  @apply bg-button-blue flex justify-center items-center w-fit h-fit text-white px-10 py-2 rounded-lg gap-2.5 ml-4;
+}
+
+#buttonContent {
+  @apply font-Inter cursor-pointer text-button-lg leading-snug font-normal flex justify-center items-center;
+}
+</style>

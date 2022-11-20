@@ -1,16 +1,19 @@
-<script setup lang="ts" > 
-
-const props: any = defineProps({
-    content: {
-        type: String,
-        required: true
-    }
-})
-
+<script setup lang="ts">
+defineProps({
+  content: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
-<h2 class="text-[32px] leading-8 font-Inter font-semibold">
+  <h2 id="headingWrapper">
     {{ content }}
-</h2>
+  </h2>
 </template>
+<style scoped>
+#headingWrapper {
+  @apply text-[32px] leading-8 font-Inter font-semibold;
+}
+</style>
