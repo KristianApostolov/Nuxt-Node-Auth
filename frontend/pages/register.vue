@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref } from "vue";
 
+import { apiUrl } from "~~/config";
 import { submitAuth } from "~~/utility/submitAuth";
 
 const email: Ref<any> = ref<string>("");
@@ -20,31 +21,29 @@ const credentialsWrapper = {
   "Re-enter Password": verifyPassword,
 };
 
-const submit = () => {
+function submit() {
   if (password.value === verifyPassword.value) {
-    return submitAuth({
-      email: email.value,
-      password: password.value,
-      url: "http://127.0.0.1:4000/user/register",
-      isLogin: false,
-    });
+    alert("Passwords do not match.");
+    return;
   }
-  alert("Passwords do not match.");
-  return;
-};
+  return submitAuth({
+    email: email.value,
+    password: password.value,
+    url: apiUrl + "/user/register",
+    isLogin: false,
+  });
+}
 </script>
 
 <template>
-  <div class="inline-flex flex-row w-screen h-screen overflow-hidden box-border">
-    <div class="h-[90%] w-[98%] overflow-hidden box-border">
+  <div id="pageWrapper">
+    <div id="pageContentWrapper">
       <AuthGradientBackground />
-      <div
-        class="h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden"
-      >
-        <div class="skew-x-[5deg] ml-[25%]">
-          <h1 class="mx-4 mb-4 font-Inter font-semibold text-3xl w-[250px]">
+      <div id="pageFormWrapper">
+        <div id="pageFromContentWrapper">
+          <h1 id="pageFromHeaderWrapper">
             <br />
-            Register by filling our the form.
+            Register by filling out the form.
           </h1>
           <form v-on:submit.prevent="submit">
             <AuthInput name="Email" type="text" v-bind:value="credentialsWrapper" />
@@ -58,3 +57,24 @@ const submit = () => {
     </div>
   </div>
 </template>
+<style scoped>
+#pageWrapper {
+  @apply inline-flex flex-row w-screen h-screen overflow-hidden box-border;
+}
+
+#pageContentWrapper {
+  @apply h-[90%] w-[98%] overflow-hidden box-border;
+}
+
+#pageFormWrapper {
+  @apply h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden;
+}
+
+#pageFromContentWrapper {
+  @apply skew-x-[5deg] ml-[25%];
+}
+
+#pageFromHeaderWrapper {
+  @apply mx-4 mb-4 font-Inter font-semibold text-3xl w-[250px];
+}
+</style>

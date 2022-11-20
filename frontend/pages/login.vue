@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { Ref } from "vue";
+
+import { apiUrl } from "~~/config";
 import { submitAuth } from "~~/utility/submitAuth";
 
 defineProps({
@@ -17,22 +19,19 @@ const credentialsWrapper = {
   Password: password,
 };
 
-const submit = () => {
-  submitAuth({ email: email.value, password: password.value, url: "http://127.0.0.1:4000/user/login", isLogin: true });
-};
+const submit = () =>
+  submitAuth({ email: email.value, password: password.value, url: apiUrl + "/user/login", isLogin: true });
 </script>
 
 <template>
-  <div class="inline-flex flex-row w-screen h-screen overflow-hidden box-border">
-    <div class="h-[90%] w-[98%] overflow-hidden box-border">
+  <div id="pageWrapper">
+    <div id="formWrapper">
       <AuthGradientBackground />
-      <div
-        class="h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden"
-      >
-        <div class="skew-x-[5deg] ml-[25%]">
-          <h1 class="mx-4 mb-8 font-Inter font-semibold text-3xl w-[250px]">
+      <div id="formInputWrapper">
+        <div id="formInputContentWrapper">
+          <h1 id="formInputHeader">
             <br />
-            Register by filling our the form.
+            Register by filling out the form.
           </h1>
           <form v-on:submit.prevent="submit()" class="mb-8">
             <AuthInput name="Email" type="text" v-bind:value="credentialsWrapper" />
@@ -45,3 +44,24 @@ const submit = () => {
     </div>
   </div>
 </template>
+<style scoped>
+#pageWrapper {
+  @apply inline-flex flex-row w-screen h-screen overflow-hidden box-border;
+}
+
+#formWrapper {
+  @apply h-[90%] w-[98%] overflow-hidden box-border;
+}
+
+#formInputWrapper {
+  @apply h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden;
+}
+
+#formInputContentWrapper {
+  @apply skew-x-[5deg] ml-[25%];
+}
+
+#formInputHeader {
+  @apply mx-4 mb-8 font-Inter font-semibold text-3xl w-[250px];
+}
+</style>
