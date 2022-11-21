@@ -10,6 +10,8 @@ const props: any = defineProps({
   },
 });
 
+const config = useRuntimeConfig();
+
 const email: Ref<string> = ref(props.user.email);
 const phone: Ref<string> = ref(props.user.phone);
 const name: Ref<string> = ref(props.user.name);
@@ -24,7 +26,13 @@ const credentialsWrapper = {
 };
 
 const submit = () =>
-  submitCredentialUpdate({ email: email.value, phone: phone.value, name: name.value, address: address.value });
+  submitCredentialUpdate({
+    url: config.public.apiURL,
+    email: email.value,
+    phone: phone.value,
+    name: name.value,
+    address: address.value,
+  });
 
 const field_type: string = "text";
 </script>

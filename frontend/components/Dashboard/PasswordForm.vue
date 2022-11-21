@@ -3,6 +3,8 @@ import { Ref } from "vue";
 
 import { submitPasswordUpdate } from "~~/utility/submitPasswordUpdate";
 
+const config = useRuntimeConfig();
+
 const password: Ref<string> = ref("");
 const newPassword: Ref<string> = ref("");
 const repeatNewPassword: Ref<string> = ref("");
@@ -17,6 +19,7 @@ const credentialsWrapper = {
 const submit = () => {
   form.value.reset();
   submitPasswordUpdate({
+    url: config.public.apiURL,
     oldPassword: password.value,
     newPassword: newPassword.value,
     repeatNewPassword: repeatNewPassword.value,
