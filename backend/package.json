@@ -20,6 +20,7 @@
         "redis": "^4.1.0",
         "reflect-metadata": "^0.1.13",
         "semver": "^7.3.7",
+        "ts-node": "^10.9.1",
         "typeorm": "^0.3.6",
         "update-notifier": "^6.0.2"
     },
