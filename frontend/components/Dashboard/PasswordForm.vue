@@ -43,6 +43,6 @@ const field_type: string = "password";
 </template>
 <style scoped>
 #formWrapper {
-  @apply inline-flex flex-col mx-3;
+  @apply flex flex-col items-center md:items-start mx-3;
 }
 </style>

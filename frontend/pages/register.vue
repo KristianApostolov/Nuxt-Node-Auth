@@ -37,11 +37,11 @@ function submit() {
 
 <template>
   <div id="pageWrapper">
-    <div id="pageContentWrapper">
+    <div id="formWrapper">
       <AuthGradientBackground />
-      <div id="pageFormWrapper">
-        <div id="pageFromContentWrapper">
-          <h1 id="pageFromHeaderWrapper">
+      <div id="formInputWrapper">
+        <div id="formInputContentWrapper">
+          <h1 id="formInputHeader">
             <br />
             Register by filling out the form.
           </h1>
@@ -59,22 +59,22 @@ function submit() {
 </template>
 <style scoped>
 #pageWrapper {
-  @apply inline-flex flex-row w-screen h-screen overflow-hidden box-border;
+  @apply inline-flex flex-row box-border w-screen h-screen overflow-hidden;
 }
 
-#pageContentWrapper {
-  @apply h-[90%] w-[98%] overflow-hidden box-border;
+#formWrapper {
+  @apply h-screen lg:h-[90%] w-[100%] overflow-x-hidden flex flex-col-reverse lg:flex-row;
 }
 
-#pageFormWrapper {
-  @apply h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden;
+#formInputWrapper {
+  @apply h-full  lg:h-full w-screen lg:w-1/2 lg:left-[calc(50%-50px)] lg:-skew-x-[5deg] z-50 bg-white lg:absolute flex lg:items-center overflow-hidden;
 }
 
-#pageFromContentWrapper {
-  @apply skew-x-[5deg] ml-[25%];
+#formInputContentWrapper {
+  @apply lg:skew-x-[5deg] lg:ml-[25%];
 }
 
-#pageFromHeaderWrapper {
-  @apply mx-4 mb-4 font-Inter font-semibold text-3xl w-[250px];
+#formInputHeader {
+  @apply mx-4 mb-2 md:mb-8 font-Inter font-semibold text-3xl w-[250px];
 }
 </style>

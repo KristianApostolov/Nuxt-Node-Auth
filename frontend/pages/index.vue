@@ -25,7 +25,7 @@ emit("authentication");
 }
 
 #formWrapper {
-  @apply flex flex-col items-center justify-center md:!flex-row md:items-start h-5/6 w-screen mt-20;
+  @apply flex flex-col items-center justify-center md:!flex-row md:items-start h-5/6 w-screen mt-20 space-y-6 py-4;
 }
 
 #helperText {

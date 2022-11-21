@@ -46,19 +46,19 @@ const submit = () =>
 </template>
 <style scoped>
 #pageWrapper {
-  @apply inline-flex flex-row w-screen h-screen overflow-hidden box-border;
+  @apply inline-flex flex-row box-border w-screen h-screen overflow-hidden;
 }
 
 #formWrapper {
-  @apply h-[90%] w-[98%] overflow-hidden box-border;
+  @apply h-screen lg:h-[90%] w-[100%] overflow-hidden flex flex-col-reverse lg:flex-row;
 }
 
 #formInputWrapper {
-  @apply h-full w-1/2 left-[calc(50%-50px)] -skew-x-[5deg] z-50 bg-white absolute flex items-center overflow-hidden;
+  @apply h-auto lg:h-full w-screen lg:w-1/2 lg:left-[calc(50%-50px)] lg:-skew-x-[5deg] z-[5000] bg-white lg:absolute flex lg:items-center overflow-x-hidden;
 }
 
 #formInputContentWrapper {
-  @apply skew-x-[5deg] ml-[25%];
+  @apply lg:skew-x-[5deg] lg:ml-[25%];
 }
 
 #formInputHeader {

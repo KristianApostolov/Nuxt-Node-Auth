@@ -7,14 +7,14 @@
 </template>
 <style scoped>
 #backgroundWrapper {
-  @apply flex absolute overflow-hidden w-1/2 h-full -z-10;
+  @apply flex relative lg:absolute overflow-hidden w-screen lg:w-1/2 h-[40%] min-h-[180px] lg:h-full -z-10;
 }
 
 #backgroundTextWrapper {
-  @apply m-auto h-full w-full flex items-center;
+  @apply m-auto h-full w-full flex items-center justify-center lg:justify-start text-center lg:text-start;
 }
 
 #backgroundText {
-  @apply w-[251px] font-Inter font-semibold text-3xl text-white mx-36 mb-80;
+  @apply w-[251px] font-Inter font-semibold text-3xl text-white lg:mx-36 lg:mb-80;
 }
 </style>
