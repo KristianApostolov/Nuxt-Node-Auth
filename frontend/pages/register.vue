@@ -22,7 +22,7 @@ const credentialsWrapper = {
 };
 
 function submit() {
-  if (password.value === verifyPassword.value) {
+  if (password.value !== verifyPassword.value) {
     alert("Passwords do not match.");
     return;
   }
