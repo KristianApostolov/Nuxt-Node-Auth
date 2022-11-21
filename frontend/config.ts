@@ -1,1 +1,1 @@
-export const apiUrl: string = "http://127.0.0.1:7976"; // Your backend url;
+export const apiUrl: string = "nuxt-node-auth-production-9044.up.railway.app"; // Your backend url;
