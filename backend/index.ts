@@ -10,7 +10,7 @@ import router from "./routes";
 const app: Express = express();
 
 app.use(express.json());
-app.use(cors({ origin: [`${frontend_url}`] }));
+app.use(cors());
 
 app.use(router);
 
