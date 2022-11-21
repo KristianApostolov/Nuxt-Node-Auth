@@ -19,7 +19,7 @@ const credentialsWrapper = {
 const submit = () => {
   form.value.reset();
   submitPasswordUpdate({
-    url: config.public.apiURL,
+    url: config.public.apiUrl,
     oldPassword: password.value,
     newPassword: newPassword.value,
     repeatNewPassword: repeatNewPassword.value,

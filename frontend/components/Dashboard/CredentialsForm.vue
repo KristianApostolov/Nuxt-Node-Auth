@@ -27,7 +27,7 @@ const credentialsWrapper = {
 
 const submit = () =>
   submitCredentialUpdate({
-    url: config.public.apiURL,
+    url: config.public.apiUrl,
     email: email.value,
     phone: phone.value,
     name: name.value,
