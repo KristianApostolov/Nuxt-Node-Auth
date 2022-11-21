@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const getUser = async (url: string, sessionId: string) => {
+const getUser = async (sessionId: string, url: string) => {
   const user: object = await axios
     .post(`${url}/user/get`, {
       session_id: sessionId,

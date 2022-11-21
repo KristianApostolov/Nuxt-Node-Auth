@@ -4,7 +4,7 @@ import cors from "cors";
 import "./databases/database";
 import "./databases/cache";
 
-import { server_port, frontend_url } from "./enviroment";
+import { server_port } from "./enviroment";
 import router from "./routes";
 
 const app: Express = express();
