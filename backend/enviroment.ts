@@ -3,6 +3,8 @@ import { Enviroment } from "./types";
 
 export const server_port = process.env.PORT;
 
+export const frontend_url = process.env.FRONTEND_URL;
+
 export const db_config: Enviroment = {
   host: process.env.MARIA_HOST,
   port: Number(process.env.MARIA_PORT),
