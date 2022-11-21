@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { Ref } from "vue";
 
-import { apiUrl } from "~~/config";
 import { submitAuth } from "~~/utility/submitAuth";
 
 defineProps({
@@ -10,6 +9,8 @@ defineProps({
     required: true,
   },
 });
+
+const config = useRuntimeConfig();
 
 const email: Ref<any> = ref<string>("");
 const password: Ref<any> = ref<string>("");
@@ -20,7 +21,12 @@ const credentialsWrapper = {
 };
 
 const submit = () =>
-  submitAuth({ email: email.value, password: password.value, url: apiUrl + "/user/login", isLogin: true });
+  submitAuth({
+    email: email.value,
+    password: password.value,
+    url: config.public.apiUrl + "/user/login",
+    isLogin: true,
+  });
 </script>
 
 <template>

@@ -1,9 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-import { apiUrl } from "~~/config";
 
-const getUser = async (sessionId: string) => {
+const getUser = async (url: string, sessionId: string) => {
   const user: object = await axios
-    .post(`${apiUrl}/user/get`, {
+    .post(`${url}/user/get`, {
       session_id: sessionId,
     })
     .then((response: AxiosResponse) => {

@@ -3,6 +3,11 @@ import { defineNuxtConfig } from "nuxt";
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    },
+  },
   app: {
     head: {
       title: "Nuxt3-Typescript-Express-MySQL-Redis Authentication example",

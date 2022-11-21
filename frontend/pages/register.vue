@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Ref } from "vue";
 
-import { apiUrl } from "~~/config";
 import { submitAuth } from "~~/utility/submitAuth";
+
+const config = useRuntimeConfig();
 
 const email: Ref<any> = ref<string>("");
 const password: Ref<any> = ref<string>("");
@@ -29,7 +30,7 @@ function submit() {
   return submitAuth({
     email: email.value,
     password: password.value,
-    url: apiUrl + "/user/register",
+    url: config.public.apiUrl + "/user/register",
     isLogin: false,
   });
 }
